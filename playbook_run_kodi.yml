@@ -1,0 +1,6 @@
+---
+- name: "Run kodi"
+  hosts: pi
+
+  roles: 
+    - run_kodi

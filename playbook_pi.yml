@@ -5,3 +5,4 @@
   roles: 
     - update_repositories
     - install_kodi
+    - run_kodi
