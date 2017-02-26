@@ -1,0 +1,12 @@
+---
+- name: "Install kodi"
+  package:
+    name: kodi
+    state: latest
+  become: true
+
+- name: "Add sources file"
+  copy:
+     src: sources.xml
+     dest: /home/pi/.kodi/userdata/sources.xml
+     mode: 755

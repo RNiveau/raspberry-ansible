@@ -1,0 +1,7 @@
+---
+- name: "Provisioning raspberry media center"
+  hosts: pi
+
+  roles: 
+    - update_repositories
+    - install_kodi
