@@ -9,4 +9,9 @@
   copy:
      src: sources.xml
      dest: /home/pi/.kodi/userdata/sources.xml
-     mode: 755
+     mode: "0755"
+
+- name: "Create videos files"
+  file: 
+    path: /home/pi/videos
+    state: directory
