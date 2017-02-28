@@ -1,9 +1,9 @@
 ---
 - name: "Mount timecapsule"
   mount:
-    path: "{{timecapsule_path}}"
+    name: "{{timecapsule_path}}"
     src: "{{timecapsule_src}}"
     fstype: cifs
-    opts: username={{timecapsuleUsername}},password={{timecapsuleUserPassword}},rw,uid=1000,iocharset=utf8,sec=ntlm 0 0
+    opts: username={{timecapsuleUsername}},password={{timecapsulePassword}},rw,uid=1000,iocharset=utf8,sec=ntlm
     state: mounted
   become: true

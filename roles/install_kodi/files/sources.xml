@@ -4,9 +4,24 @@
     </programs>
     <video>
         <default pathversion="1"></default>
+        <source>
+            <name>Vidéos</name>
+            <path pathversion="1">/home/pi/timecapsule/Vidéos/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>videos from pi</name>
+            <path pathversion="1">/home/pi/videos/</path>
+            <allowsharing>true</allowsharing>
+        </source>
     </video>
     <music>
         <default pathversion="1"></default>
+        <source>
+            <name>Musique from Kiva</name>
+            <path pathversion="1">/home/pi/timecapsule/Musique from Kiva/</path>
+            <allowsharing>true</allowsharing>
+        </source>
     </music>
     <pictures>
         <default pathversion="1"></default>
@@ -14,8 +29,18 @@
     <files>
         <default pathversion="1"></default>
         <source>
-            <name>videos</name>
+            <name>videos from pi</name>
             <path pathversion="1">/home/pi/videos/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Films</name>
+            <path pathversion="1">/home/pi/timecapsule/Vidéos/Films/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Musique from Kiva</name>
+            <path pathversion="1">/home/pi/timecapsule/Musique from Kiva/</path>
             <allowsharing>true</allowsharing>
         </source>
     </files>
