@@ -5,4 +5,5 @@
   roles: 
     - update_repositories
     - install_kodi
+    - mount_timecapsule
     - run_kodi

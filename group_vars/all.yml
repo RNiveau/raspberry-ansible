@@ -4,3 +4,5 @@
 # All Variables shared within any environment #
 #---------------------------------------------#
 
+timecapsule_path: /home/pi/timecapsule
+timecapsule_src: //10.0.0.3/Data
