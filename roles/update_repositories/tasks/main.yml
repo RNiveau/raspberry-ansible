@@ -1,4 +1,11 @@
 ---
+- name: "Add kodi repository"
+  apt_repository:
+    repo: deb http://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /
+    state: present
+  become: true
+
+
 - name: "Update repositories"
   apt:
     update_cache: yes

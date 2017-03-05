@@ -1,8 +1,9 @@
 ---
 - name: "Install kodi"
-  package:
+  apt:
     name: kodi
     state: latest
+    force: yes
   become: true
 
 - name: "Add sources file"
