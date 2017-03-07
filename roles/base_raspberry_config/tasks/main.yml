@@ -1,0 +1,6 @@
+- name: "Set gpu memory to {{gpu_mem}}"
+  lineinfile:
+    name: /boot/config.txt
+    regexp: '^gpu_mem='
+    line: "gpu_mem={{gpu_mem}}"
+  become: true

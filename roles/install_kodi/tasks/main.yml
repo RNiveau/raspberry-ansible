@@ -6,6 +6,12 @@
     force: yes
   become: true
 
+- name: "Create kodi directory"
+  file: 
+    path: /home/pi/.kodi/userdata
+    state: directory
+    recurse: yes
+
 - name: "Add sources file"
   copy:
      src: sources.xml

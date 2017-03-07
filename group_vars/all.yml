@@ -4,5 +4,10 @@
 # All Variables shared within any environment #
 #---------------------------------------------#
 
+gpu_mem: 256
+
 timecapsule_path: /home/pi/timecapsule
 timecapsule_src: //10.0.0.3/Data
+
+node:
+  version: 6

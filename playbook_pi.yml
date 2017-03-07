@@ -3,7 +3,9 @@
   hosts: pi
 
   roles: 
+    - base_raspberry_config
     - update_repositories
     - install_kodi
     - mount_timecapsule
-    - run_kodi
+#    - install_nvm
+#    - install_homekit-bridge
