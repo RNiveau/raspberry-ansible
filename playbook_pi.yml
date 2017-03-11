@@ -7,5 +7,5 @@
     - update_repositories
     - install_kodi
     - mount_timecapsule
-#    - install_nvm
-#    - install_homekit-bridge
+    - install_nvm
+    - install_homekit-bridge
