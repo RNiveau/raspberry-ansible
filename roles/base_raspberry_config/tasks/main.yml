@@ -4,3 +4,15 @@
     regexp: '^gpu_mem='
     line: "gpu_mem={{gpu_mem}}"
   become: true
+
+- name: "Add pi user"
+  user:
+    name: pi
+    group: pi
+    createhome: yes
+
+- name: "Add ssh directory to pi"
+  file: 
+    path: /home/pi/.ssh
+    mode: "0700"
+    state: directory
