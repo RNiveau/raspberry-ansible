@@ -1,0 +1,12 @@
+- name: "Install nvm"
+  shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash"
+
+- name: "Create /etc/profile.d/nvm.sh"
+  copy:
+    src: nvm.sh
+    dest: /etc/profile.d/nvm.sh
+    mode: "0755"
+  become: true
+
+- name: "Install node {{node.version}}"
+  shell: bash -lc "nvm install {{node.version}}"
