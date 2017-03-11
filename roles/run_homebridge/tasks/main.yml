@@ -1,0 +1,3 @@
+---
+- name: "Run homebrige"
+  shell: nohup /home/pi/.nvm/versions/node/v6.10.0/bin/homebridge &
