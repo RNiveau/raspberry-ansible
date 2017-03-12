@@ -1,6 +1,6 @@
 ---
-- name: "Run homebridge"
+- name: "Run kodi"
   hosts: pi
 
   roles: 
-    - run_homebridge
+    - run_kodi
