@@ -1,0 +1,24 @@
+- name: Install insserv
+  package:
+    name: insserv
+    state: latest
+  become: true
+
+- name: Install avahi
+  package:
+    name: avahi-daemon
+    state: latest
+  become: true
+
+- name: "Create /etc/avahi/services/multiple.service"
+  copy:
+    src: multiple.service
+    dest: /etc/avahi/services/multiple.service
+    mode: "0755"
+  become: true
+
+- name: Restart avahi 
+  service:
+    name: avahi-daemon
+    state: restarted
+  become: true    

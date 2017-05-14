@@ -1,0 +1,27 @@
+- name: Checkout repo shairplay
+  git:
+    repo: https://github.com/juhovh/shairplay.git
+    dest: /home/pi/shairplay
+
+- name: Install dependencies
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - autoconf
+    - automake
+    - libtool
+    - libltdl-dev
+    - libao-dev
+    - libavahi-compat-libdnssd-dev
+    - avahi-daemon
+  become: true
+
+- name: Compile shairplay
+  shell: "{{ item }}"
+  with_items:
+    - "cd /home/pi/shairplay && ./autogen.sh"
+    - "cd /home/pi/shairplay && ./configure"
+    - "cd /home/pi/shairplay && make"
+    - "cd /home/pi/shairplay && make install"
+  become: true

@@ -1,11 +1,16 @@
+#Activate wifi
+#https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
 ---
 - name: "Provisioning raspberry media center"
   hosts: pi
 
   roles: 
     - base_raspberry_config
-    - update_repositories
+#    - update_repositories
     - install_kodi
     - mount_timecapsule
-    - install_nvm
-    - install_homekit-bridge
+#    - install_nvm
+#    - install_homekit-bridge
+    - install_git
+    - install_avahi
+#    - install_shairplay
