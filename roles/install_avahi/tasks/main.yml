@@ -10,13 +10,6 @@
     state: latest
   become: true
 
-- name: "Create /etc/avahi/services/multiple.service"
-  copy:
-    src: multiple.service
-    dest: /etc/avahi/services/multiple.service
-    mode: "0755"
-  become: true
-
 - name: Restart avahi 
   service:
     name: avahi-daemon
