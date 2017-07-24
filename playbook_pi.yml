@@ -12,4 +12,5 @@
 #    - install_homekit-bridge
     - {role: install_git, tags: 'code'}
     - {role: nodejs, tags: 'code'}
+    - {role: nokia_to_fitbit_bridge, tags: 'code'}
     - {role: install_avahi}

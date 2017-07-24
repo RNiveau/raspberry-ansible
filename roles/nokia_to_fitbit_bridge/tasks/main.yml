@@ -1,0 +1,16 @@
+- name: "Checkout repository"
+  git:
+    repo: https://github.com/RNiveau/nokiaToFitbitBridge
+    dest: /home/pi/nokiaToFitbitBridge
+
+- name: "Install package"
+  npm:
+    path: /home/pi/nokiaToFitbitBridge
+    state: present
+
+- name: "Create cron about bridge"
+  cron:
+    name: "nokiaToFitbitBridge"
+    special_time: hourly
+    job: /usr/bin/node /home/pi/nokiaToFitbitBridge/app.js
+    user: "{{ansible_user}}"
