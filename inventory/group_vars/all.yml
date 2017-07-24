@@ -9,5 +9,5 @@ gpu_mem: 256
 timecapsule_path: /home/pi/timecapsule
 timecapsule_src: //time-capsule-de-kiva.local/Data
 
-node:
-  version: 6
+nodejs_version: "7.x"
+
