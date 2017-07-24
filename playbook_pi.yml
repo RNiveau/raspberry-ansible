@@ -5,12 +5,11 @@
   hosts: pi
 
   roles: 
-    - base_raspberry_config
-#    - update_repositories
-    - install_kodi
-    - mount_timecapsule
-#    - install_nvm
+    - {role: base_raspberry_config}
+    - {role: update_repositories}
+    - {role: install_kodi, tags: 'kodi'}
+    - {role: mount_timecapsule, tags: 'kodi'}
 #    - install_homekit-bridge
-    - install_git
-    - install_avahi
-#    - install_shairplay
+    - {role: install_git, tags: 'code'}
+    - {role: nodejs, tags: 'code'}
+    - {role: install_avahi}
