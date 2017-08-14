@@ -1,0 +1,6 @@
+---
+- name: "Test some tasks"
+  hosts: pi
+
+  roles: 
+    - test
