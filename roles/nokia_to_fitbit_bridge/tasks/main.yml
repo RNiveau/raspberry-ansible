@@ -14,3 +14,11 @@
     special_time: hourly
     job: /usr/bin/node /home/pi/nokiaToFitbitBridge/app.js
     user: "{{ansible_user}}"
+
+- name: "File for config"
+  template:
+    src: templates/config.json.j2
+    dest: /home/pi/nokiaToFitbitBridge/config.json
+    owner: "{{ansible_user}}"
+    group: "{{ansible_user}}"
+    mode: 0644
