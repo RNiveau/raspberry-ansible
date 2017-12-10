@@ -12,7 +12,14 @@
   cron:
     name: "nokiaToFitbitBridge"
     special_time: hourly
-    job: /usr/bin/node /home/pi/nokiaToFitbitBridge/app.js
+    job: /usr/bin/node /home/pi/nokiaToFitbitBridge/bridge_nokia_fitbit.js
+    user: "{{ansible_user}}"
+
+- name: "Create cron about bridge"
+  cron:
+    name: "Watch water"
+    special_time: hourly
+    job: /usr/bin/node /home/pi/nokiaToFitbitBridge/fitbit_water_watch.js
     user: "{{ansible_user}}"
 
 - name: "File for config"
