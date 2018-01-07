@@ -1,0 +1,29 @@
+- name: Create virtualenv
+  command: virtualenv /home/pi/env
+
+- name: Checkout repository
+  git:
+    repo: https://github.com/RNiveau/meal-management
+    dest: /home/pi/meal-management
+
+- name: Install meal-management
+  pip:
+    requirements: /home/pi/meal-management/requirements.txt
+    virtualenv: /home/pi/env
+
+- name: Config
+  template:
+    src: templates/app.yml.j2
+    dest: /home/pi/meal-management/app.yaml
+    owner: "{{ansible_user}}"
+    group: "{{ansible_user}}"
+    mode: 0644
+
+- name: Create cron about meal
+  cron:
+    name: "meal-management"
+    minute: 0
+    hour: 19
+    weekday: 3
+    job: bash -c 'cd /home/pi/meal-management/ && /home/pi/env/bin/python /home/pi/meal-management/generate.py'
+    user: "{{ansible_user}}"
