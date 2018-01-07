@@ -1,0 +1,10 @@
+- name: Install python
+  package:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - python
+    - python-pip
+    - python-dev
+    - virtualenv
+  become: true
