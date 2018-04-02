@@ -5,7 +5,6 @@
     state: present
   become: true
 
-
 - name: "Update repositories"
   apt:
     update_cache: yes

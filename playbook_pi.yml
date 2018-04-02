@@ -5,8 +5,8 @@
   hosts: pi
 
   roles: 
-    - {role: base_raspberry_config}
-    - {role: update_repositories}
+    - {role: base_raspberry_config, tags: 'base'}
+    - {role: update_repositories, tags: 'base'}
     - {role: install_kodi, tags: 'kodi'}
     - {role: mount_timecapsule, tags: 'kodi'}
 #    - install_homekit-bridge

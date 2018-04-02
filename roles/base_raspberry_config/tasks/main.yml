@@ -16,3 +16,15 @@
     path: /home/pi/.ssh
     mode: "0700"
     state: directory
+
+- name: 'Install ntp'
+  package:
+    name: ntp
+    state: present
+  become: true
+
+- name: 'Ensure ntp start'
+  service:
+    name: ntp
+    state: started
+  become: true
