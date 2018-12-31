@@ -1,0 +1,61 @@
+- name: Add docker key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  become: true
+
+- name: Add docker repository
+  apt_repository:
+    repo: deb [arch=armhf] https://download.docker.com/linux/debian stretch stable
+    state: present
+  become: true
+
+- name: Install docker
+  package:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - docker-ce
+      - docker-ce-cli
+      - docker-compose
+    state: latest
+  become: true
+
+- name: Add pi user in docker group
+  user:
+    name: pi
+    append: true
+    groups: docker
+  become: true
+
+- name: Docker login
+  command: docker login -u {{ docker_login }} -p {{ docker_password }}
+
+- name: Create directory for crypto-wallet
+  file:
+    path: /etc/crypto-wallet
+    state: directory
+    owner: pi
+    group: docker
+    mode: 0755
+  become: true
+
+- name: Create directory for mongo volumes
+  file:
+    path: /var/crypto-wallet-mongo
+    state: directory
+    owner: pi
+    group: docker
+    mode: 0755
+  become: true
+
+- name: Push docker-compose
+  copy:
+    src: docker-compose.yaml
+    dest: /etc/crypto-wallet/docker-compose.yaml
+
+- name: Push config.yaml
+  copy:
+    src: config.yaml
+    dest: /etc/crypto-wallet/config.yaml
