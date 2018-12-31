@@ -1,29 +1,53 @@
-- name: "Set gpu memory to {{gpu_mem}}"
+- name: Set gpu memory to {{ gpu_mem }}
   lineinfile:
     name: /boot/config.txt
     regexp: '^gpu_mem='
-    line: "gpu_mem={{gpu_mem}}"
+    line: "gpu_mem={{ gpu_mem }}"
   become: true
 
-- name: "Add pi user"
+- name: Enable camera
+  lineinfile:
+    name: /boot/config.txt
+    regexp: '^start_x='
+    line: "start_x=1"
+  become: true
+  when:
+    - enable_camera is defined
+    - enable_camera
+
+- name: Add pi user
   user:
     name: pi
     group: pi
     createhome: yes
 
-- name: "Add ssh directory to pi"
-  file: 
+- name: Add ssh directory to pi
+  file:
     path: /home/pi/.ssh
     mode: "0700"
     state: directory
 
-- name: 'Install ntp'
+- name: Copy bash_profile
+  copy:
+    src: bash_profile
+    dest: /home/pi/.bash_profile
+    mode: 0640
+
+- name: Push ssh key
+  authorized_key:
+    user: pi
+    state: present
+    key: "{{ item }}"
+  with_file:
+    - id_rsa.pub
+
+- name: Install ntp
   package:
     name: ntp
     state: present
   become: true
 
-- name: 'Ensure ntp start'
+- name: Ensure ntp start
   service:
     name: ntp
     state: started

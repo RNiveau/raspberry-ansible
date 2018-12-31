@@ -1,11 +1,13 @@
----
-- name: "Add kodi repository"
+- name: Add kodi repository
   apt_repository:
-    repo: deb http://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /
+    repo: deb http://pipplware.pplware.pt/pipplware/dists/stretch/main/binary /
     state: present
   become: true
+  when:
+    - use_kodi is defined
+    - use_kodi
 
-- name: "Update repositories"
+- name: Update repositories
   apt:
     update_cache: yes
   become: true

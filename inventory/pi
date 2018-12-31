@@ -1,2 +1,5 @@
 [pi]
 raspberrypi.local ansible_user=pi
+
+[camera]
+10.0.0.21 ansible_user=pi

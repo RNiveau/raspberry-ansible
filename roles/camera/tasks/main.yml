@@ -1,0 +1,38 @@
+- name: Load module bcm2835-v4l2 on startup
+  copy:
+    src: bcm2835-v4l2.conf
+    dest: /etc/modules-load.d/bcm2835-v4l2.conf
+    owner: root
+    group: root
+    mode: 0640
+  become: true
+
+- name: Install motion
+  package:
+    name: motion
+    state: present
+  become: true
+
+- name: Create motion directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: motion
+    group: video
+    mode: 0755
+    recurse: yes
+  become: true
+  notify: restart motion
+  with_items:
+    - /etc/motion
+    - /var/motion/storage
+    - /var/log/motion
+
+- name: Copy motion configuration
+  copy:
+    src: motion.conf
+    dest: /etc/motion/motion.conf
+    owner: motion
+    group: video
+  become: true
+  notify: restart motion

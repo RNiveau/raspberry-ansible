@@ -1,0 +1,10 @@
+#Activate wifi
+#https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+---
+- name: Provisioning raspberry camera
+  hosts: camera
+
+  roles: 
+    - {role: base_raspberry_config, tags: base}
+    - {role: update_repositories, tags: base}
+    - {role: camera, tags: camera}
