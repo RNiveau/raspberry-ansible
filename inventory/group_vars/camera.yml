@@ -1,1 +1,2 @@
 enable_camera: true
+hostname: camera

@@ -52,3 +52,9 @@
     name: ntp
     state: started
   become: true
+
+- name: Set hostname
+  copy:
+    dest: /etc/hostname
+    content: "{{ hostname }}"
+  become: true

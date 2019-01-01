@@ -10,8 +10,11 @@
     state: latest
   become: true
 
-- name: Restart avahi 
-  service:
-    name: avahi-daemon
-    state: restarted
+- name: Copy avahi configuration
+  template:
+    src: avahi.conf.j2
+    dest: /etc/avahi/avahi-daemon.conf
+    owner: root
+    group: root
   become: true
+  notify: Restart avahi

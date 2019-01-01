@@ -7,4 +7,5 @@
   roles: 
     - {role: base_raspberry_config, tags: base}
     - {role: update_repositories, tags: base}
+    - {role: install_avahi, tags: base}
     - {role: camera, tags: camera}
