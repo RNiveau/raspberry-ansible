@@ -36,3 +36,9 @@
     group: video
   become: true
   notify: restart motion
+
+- name: Disable service
+  service:
+    name: motion
+    enabled: false
+  become: true

@@ -9,7 +9,6 @@
     - {role: update_repositories, tags: 'base'}
     - {role: install_kodi, tags: 'kodi'}
     - {role: mount_timecapsule, tags: 'kodi'}
-#    - install_homekit-bridge
     - {role: install_git, tags: 'code'}
     - {role: python, tags: 'code'}
     - {role: nodejs, tags: 'code'}

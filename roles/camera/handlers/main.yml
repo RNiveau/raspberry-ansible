@@ -1,5 +1,6 @@
+# For now, we don't want start the service
 - name: restart motion
   service:
     name: motion
-    state: restarted
+    state: stopped
   become: true

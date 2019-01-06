@@ -1,0 +1,54 @@
+- name: Install system dependencies
+  package:
+    name:
+      - libavahi-compat-libdnssd-dev
+      - nodejs
+      - npm
+    state: present
+  become: true
+
+- name: Install homebridge and plugins
+  npm:
+    name: homebridge
+    global: true
+    state: present
+  become: true
+  with_items:
+    - homebridge
+    - homebridge-camera-rpi
+
+- name: Create homebridge user
+  user:
+    name: homebridge
+    groups: video
+    append: true
+    state: present
+  become: true
+
+- name: Create homebridge directory
+  file:
+    path: "{{ item }}"
+    owner: homebridge
+    group: video
+    state: directory
+  become: true
+  with_items:
+    - /etc/homebridge/
+    - /var/log/homebridge/
+
+- name: Copy service file
+  copy:
+    src: homebridge.service
+    dest: /etc/systemd/system/homebridge.service
+  become: true
+  notify:
+    - reload systemd
+    - restart homebridge
+
+- name: Copy configuration file
+  copy:
+    src: homebridge.json
+    dest: /etc/homebridge/config.json
+    owner: homebridge
+  become: true
+  notify: restart homebridge

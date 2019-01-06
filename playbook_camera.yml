@@ -8,4 +8,5 @@
     - {role: base_raspberry_config, tags: base}
     - {role: update_repositories, tags: base}
     - {role: install_avahi, tags: base}
+    - {role: homebridge, tags: homebridge}
     - {role: camera, tags: camera}
