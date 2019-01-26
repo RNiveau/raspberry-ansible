@@ -45,6 +45,13 @@
     - reload systemd
     - restart homebridge
 
+- name: Enable service
+  service:
+    name: homebridge
+    enabled: yes
+  become: true
+  notify: reload systemd
+
 - name: Copy configuration file
   copy:
     src: homebridge.json
