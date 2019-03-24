@@ -15,8 +15,6 @@
   template:
     src: templates/app.yml.j2
     dest: /home/pi/meal-management/app.yaml
-    owner: "{{ansible_user}}"
-    group: "{{ansible_user}}"
     mode: 0644
 
 - name: Create cron about meal
@@ -27,6 +25,7 @@
     weekday: 3
     job: bash -c 'cd /home/pi/meal-management/ && /home/pi/env/bin/python /home/pi/meal-management/generate.py'
     user: "{{ansible_user}}"
+    state: absent
 
 - name: Create cron about meal shiva
   cron:
@@ -36,3 +35,4 @@
     weekday: 3
     job: bash -c 'cd /home/pi/meal-management/ && /home/pi/env/bin/python /home/pi/meal-management/generate.py --config /home/pi/meal-management/config-shiva.yaml'
     user: "{{ansible_user}}"
+    state: absent

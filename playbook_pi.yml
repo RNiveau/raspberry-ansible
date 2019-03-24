@@ -13,5 +13,5 @@
     - {role: python, tags: 'code'}
     - {role: nodejs, tags: 'code'}
     - {role: nokia_to_fitbit_bridge, tags: 'code'}
-    - {role: meal_management, tags: 'code'}
+    - {role: meal_management, tags: ['code', 'meal_management']}
     - {role: install_avahi}
